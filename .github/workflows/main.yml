@@ -9,7 +9,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    needs: build
+    needs: build   # ✅ build (lint + build) must PASS first
 
     steps:
       - name: Checkout code
@@ -51,7 +51,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: test
+    needs: test    # ✅ tests must PASS first
 
     steps:
       - name: Checkout code
